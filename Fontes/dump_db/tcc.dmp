@@ -1,0 +1,297 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.0
+-- Dumped by pg_dump version 10.0
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: tab_cliente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE tab_cliente (
+    cl_nome character varying(200) NOT NULL,
+    cl_dt_nasc date,
+    cl_sexo character(1),
+    cl_email character varying(100) NOT NULL,
+    cl_telefone character varying(16),
+    cl_cpf character varying(14) NOT NULL,
+    cl_rg character varying(20),
+    cl_cep character varying(10),
+    cl_logradouro character(200),
+    cl_numero character varying(20),
+    cl_bairro character varying(100),
+    cl_cidade character varying(100),
+    cl_estado character varying(100),
+    cl_xy geometry(Point),
+    cl_eq integer,
+    cl_id integer NOT NULL,
+    cl_complemento character varying(50)
+);
+
+
+ALTER TABLE tab_cliente OWNER TO postgres;
+
+--
+-- Name: tab_cliente_cl_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE tab_cliente_cl_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tab_cliente_cl_id_seq OWNER TO postgres;
+
+--
+-- Name: tab_cliente_cl_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE tab_cliente_cl_id_seq OWNED BY tab_cliente.cl_id;
+
+
+--
+-- Name: tab_eqto; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE tab_eqto (
+    eq_id integer NOT NULL,
+    eq_fabricante character varying(100),
+    eq_modelo character varying(100),
+    eq_watts numeric
+);
+
+
+ALTER TABLE tab_eqto OWNER TO postgres;
+
+--
+-- Name: tab_eqto_eq_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE tab_eqto_eq_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tab_eqto_eq_id_seq OWNER TO postgres;
+
+--
+-- Name: tab_eqto_eq_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE tab_eqto_eq_id_seq OWNED BY tab_eqto.eq_id;
+
+
+--
+-- Name: tab_usuario; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE tab_usuario (
+    us_id integer NOT NULL,
+    us_nome character varying(200) NOT NULL,
+    us_dt_nasc date,
+    us_sexo character(1),
+    us_email character varying(100) NOT NULL,
+    us_telefone character varying(16),
+    us_cpf character varying(14) NOT NULL,
+    us_rg character varying(20),
+    us_cep character varying(10),
+    us_logradouro character(200),
+    us_numero character varying(20),
+    us_bairro character varying(100),
+    us_cidade character varying(100),
+    us_estado character varying(100),
+    us_perm numeric(1,0) NOT NULL,
+    us_senha character varying(20),
+    us_complemento character varying(50)
+);
+
+
+ALTER TABLE tab_usuario OWNER TO postgres;
+
+--
+-- Name: TABLE tab_usuario; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE tab_usuario IS 'tabela usuarios do sistema';
+
+
+--
+-- Name: tab_usuario_us_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE tab_usuario_us_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tab_usuario_us_id_seq OWNER TO postgres;
+
+--
+-- Name: tab_usuario_us_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE tab_usuario_us_id_seq OWNED BY tab_usuario.us_id;
+
+
+--
+-- Name: tab_cliente cl_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tab_cliente ALTER COLUMN cl_id SET DEFAULT nextval('tab_cliente_cl_id_seq'::regclass);
+
+
+--
+-- Name: tab_eqto eq_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tab_eqto ALTER COLUMN eq_id SET DEFAULT nextval('tab_eqto_eq_id_seq'::regclass);
+
+
+--
+-- Name: tab_usuario us_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tab_usuario ALTER COLUMN us_id SET DEFAULT nextval('tab_usuario_us_id_seq'::regclass);
+
+
+--
+-- Data for Name: tab_cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tab_cliente (cl_nome, cl_dt_nasc, cl_sexo, cl_email, cl_telefone, cl_cpf, cl_rg, cl_cep, cl_logradouro, cl_numero, cl_bairro, cl_cidade, cl_estado, cl_xy, cl_eq, cl_id, cl_complemento) FROM stdin;
+teste nome hhhh	2011-01-10	F	dfgdfg@kjhjkh.co	345345	1232312	12312312	13330630	Rua Granada                                                                                                                                                                                             	76	Vila Todos os Santos	Indaiatuba	SP	0101000020E6100000CB2B7C22F41437C0B96466B0F39B47C0	4	16	
+eterter dfgdg	1987-11-10	F	dfgdfg@kjhjkh.co	345345	33333333333333	12312312	13330630	Rua Granada                                                                                                                                                                                             	76	Vila Todos os Santos	Indaiatuba	SP	0101000020E61000001DB0ABC9531637C04B19DDE6329A47C0	2	14	
+teste nome	2011-01-10	F	dfgdfg@kjhjkh.co	345345	1232312	12312312	13330630	Rua Granada                                                                                                                                                                                             	76	Vila Todos os Santos	Indaiatuba	SP	0101000020E6100000F3F1BF4B5F1637C08BF95EE8B69B47C0	\N	15	
+Fernando silvera dos santeos	2000-04-24	M	fernado@atmtec.com.br	55-19-999235886	999.123.456.87	111111111111	13334-020	Rua dos Andradas                                                                                                                                                                                        	12	Cidade Nova I	Indaiatuba	SP	0101000020E610000015E0BBCD1B1537C0FDAF29464C9A47C0	9	17	ert
+\.
+
+
+--
+-- Data for Name: tab_eqto; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tab_eqto (eq_id, eq_fabricante, eq_modelo, eq_watts) FROM stdin;
+2	Fab 1	mod 2	245
+4	Fab 2	mod 2	255
+5	Fab 2	mod 3	260
+6	Fab 2	mod 4	265
+7	Fab 3	mod 1	270
+8	Marca 99	Modelo 66	321
+9	marca 3333	modelo9988	444
+3	Fab 2	mod 1	666
+\.
+
+
+--
+-- Data for Name: tab_usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tab_usuario (us_id, us_nome, us_dt_nasc, us_sexo, us_email, us_telefone, us_cpf, us_rg, us_cep, us_logradouro, us_numero, us_bairro, us_cidade, us_estado, us_perm, us_senha, us_complemento) FROM stdin;
+1	Jambra Silva	\N	T	jambra@uol.com.br	\N	314.827.488.21	\N	\N	\N	\N	\N	\N	\N	4	klamidia666	\N
+3	Ssibero Lucas	\N	\N	licas@uol.com	\N	122.45.652	\N	\N	\N	\N	\N	\N	\N	5	123	\N
+6	Celso Alves	1983-04-15	M	celsoware@hotmail.com	123456	3148274881	4000000	13332052	Rua Antônio Gaspar Filho                                                                                                                                                                                	145	Parque Residencial Indaiá	Indaiatuba	SP	4	\N	apt 89
+11	asdasdasd	2001-01-01	M	jgjhgh@lhlklkj.com	45345	46765786756345	345345345	13330630	Rua Granada                                                                                                                                                                                             	34534	Vila Todos os Santos	Indaiatuba	SP	1	abc321!	5345
+\.
+
+
+--
+-- Name: tab_cliente_cl_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tab_cliente_cl_id_seq', 17, true);
+
+
+--
+-- Name: tab_eqto_eq_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tab_eqto_eq_id_seq', 12, true);
+
+
+--
+-- Name: tab_usuario_us_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tab_usuario_us_id_seq', 11, true);
+
+
+--
+-- Name: tab_usuario pk_usuarios; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tab_usuario
+    ADD CONSTRAINT pk_usuarios PRIMARY KEY (us_id);
+
+
+--
+-- Name: tab_cliente tab_cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tab_cliente
+    ADD CONSTRAINT tab_cliente_pkey PRIMARY KEY (cl_id);
+
+
+--
+-- Name: tab_eqto tab_eqto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tab_eqto
+    ADD CONSTRAINT tab_eqto_pkey PRIMARY KEY (eq_id);
+
+
+--
+-- Name: tab_usuario unq_usuario_cpf; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tab_usuario
+    ADD CONSTRAINT unq_usuario_cpf UNIQUE (us_cpf);
+
+
+--
+-- Name: tab_usuario unq_usuario_mail; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tab_usuario
+    ADD CONSTRAINT unq_usuario_mail UNIQUE (us_email);
+
+
+--
+-- Name: tab_cliente fk_cl_eq; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tab_cliente
+    ADD CONSTRAINT fk_cl_eq FOREIGN KEY (cl_eq) REFERENCES tab_eqto(eq_id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
