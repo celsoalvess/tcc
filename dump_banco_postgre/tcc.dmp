@@ -125,7 +125,7 @@ CREATE TABLE tab_usuario (
     us_cidade character varying(100),
     us_estado character varying(100),
     us_perm numeric(1,0) NOT NULL,
-    us_senha character varying(20),
+    us_senha character varying(100),
     us_complemento character varying(50)
 );
 
@@ -215,10 +215,10 @@ COPY tab_eqto (eq_id, eq_fabricante, eq_modelo, eq_watts) FROM stdin;
 --
 
 COPY tab_usuario (us_id, us_nome, us_dt_nasc, us_sexo, us_email, us_telefone, us_cpf, us_rg, us_cep, us_logradouro, us_numero, us_bairro, us_cidade, us_estado, us_perm, us_senha, us_complemento) FROM stdin;
-1	Jambra Silva	\N	T	jambra@uol.com.br	\N	314.827.488.21	\N	\N	\N	\N	\N	\N	\N	4	klamidia666	\N
-3	Ssibero Lucas	\N	\N	licas@uol.com	\N	122.45.652	\N	\N	\N	\N	\N	\N	\N	5	123	\N
-6	Celso Alves	1983-04-15	M	celsoware@hotmail.com	123456	3148274881	4000000	13332052	Rua Antônio Gaspar Filho                                                                                                                                                                                	145	Parque Residencial Indaiá	Indaiatuba	SP	4	\N	apt 89
-11	asdasdasd	2001-01-01	M	jgjhgh@lhlklkj.com	45345	46765786756345	345345345	13330630	Rua Granada                                                                                                                                                                                             	34534	Vila Todos os Santos	Indaiatuba	SP	1	abc321!	5345
+1	Jambra Silva	\N	T	jambra@uol.com.br	\N	314.827.488.21	\N	\N	\N	\N	\N	\N	\N	4	019533f71d95f3c6c1da317ee27cc0a9	\N
+3	Ssibero Lucas	\N	\N	licas@uol.com	\N	122.45.652	\N	\N	\N	\N	\N	\N	\N	5	019533f71d95f3c6c1da317ee27cc0a9	\N
+6	Celso Alves	1983-04-15	M	celsoware@hotmail.com	123456	3148274881	4000000	13332052	Rua Antônio Gaspar Filho                                                                                                                                                                                	145	Parque Residencial Indaiá	Indaiatuba	SP	4	019533f71d95f3c6c1da317ee27cc0a9	apt 89
+11	asdasdasd	2001-01-01	M	jgjhgh@lhlklkj.com	45345	46765786756345	345345345	13330630	Rua Granada                                                                                                                                                                                             	34534	Vila Todos os Santos	Indaiatuba	SP	1	019533f71d95f3c6c1da317ee27cc0a9	5345
 \.
 
 

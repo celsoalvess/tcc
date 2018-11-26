@@ -13,7 +13,7 @@
     
     $sql =  "select us_nome, us_perm from tab_usuario ";
     $sql .= "where us_email='".$_POST["email"]."' ";
-    $sql .= "and us_senha='".$_POST["senha"]."'";
+    $sql .= "and us_senha='".md5($_POST["senha"])."'";
     
     //Busca do usuário e senha no banco de dados
     $consulta = $c->Execute($sql);

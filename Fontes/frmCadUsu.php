@@ -12,6 +12,7 @@
     //Include da classe ADODB - conexão banco de dados
     require_once ("includes/pg_cnn.php");
     require_once ("includes/msg.php");
+    require_once ("includes/utils.php");
     
     if($_SESSION['perm'] != 2 && $_SESSION['perm'] != 4)
     {
@@ -271,6 +272,8 @@
   {
     if (!$erro_frm)
     {
+      //Gerar uma senha aleatória
+      $senha = senhaGerador();
       //Monta o insert
       $sql = 'insert into tab_usuario(us_nome, us_dt_nasc, us_sexo, us_email, us_telefone, us_cpf, us_rg, ';
       $sql.= 'us_cep, us_logradouro, us_numero, us_bairro, us_cidade, us_estado, us_complemento, us_perm, us_senha) ';
@@ -278,7 +281,7 @@
       $sql.= $_POST['email'].'\', \''.$_POST['telefone'].'\', \''.$_POST['cpf'].'\', \''.$_POST['rg'].'\', \'';
       $sql.= $_POST['cep'].'\', \''.$_POST['logradouro'].'\', \''.$_POST['numero'].'\', \'';
       $sql.= $_POST['bairro'].'\', \''.$_POST['cidade'].'\', \''.$_POST['estado'].'\', \'';
-      $sql.= $_POST['complemento'].'\', '.$_POST['permissao'].', \'abc321!\')';
+      $sql.= $_POST['complemento'].'\', '.$_POST['permissao'].', \''.md5($senha).'\')';
         
       //Executa inserção do registro
       if(!$c->Execute($sql))
@@ -288,7 +291,7 @@
       else
       {
         mensagem("Registro inserido com sucesso");
-        mail($_POST['email'], 'Criação de acesso rota de vendas', 'Segue sua senha: abc321!<br>Por favor alterar no primeiro acesso em www.rotadevenda.com.br',"From: rotas@teste.com.br");
+        mail($_POST['email'], 'Criação de acesso rota de vendas', 'Segue sua senha: '.$senha.'<br>Por favor alterar no primeiro acesso em www.rotadevenda.com.br',"From: rotas@teste.com.br");
       }  
       $c->Close();
     }
